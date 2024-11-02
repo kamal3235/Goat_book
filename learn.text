@@ -1,0 +1,36 @@
+ 1. functional tests test the application from the outside, 
+ from the user’s point of view. 
+ 2. Unit tests test the application from the inside, 
+ from the programmer’s point of view
+ 3. writing a functional test, describing a typical example of our 
+ new functionality from the user’s point of view
+ 4. failing unit test, we write the smallest amount of application code 
+ we can, just enough to get the unit test to pass
+ 5. The functional tests don’t aim to cover every single tiny detail of 
+ our app’s behaviour, they are there to reassure us that everything is wired up correctly
+ 6. unit tests are there to exhaustively check all the lower level details and corner cases
+ 7. Functional tests should help you build an application that actually works, 
+ and guarantee you never accidentally break it. 
+ 8. Unit tests should help you to write code that’s clean and bug free.
+
+ Django
+ 1. Django’s workflow goes something like this:
+
+    An HTTP request comes in for a particular URL.
+    Django uses some rules to decide which view function should deal with 
+    the request (this is referred to as resolving the URL).
+    The view function processes the request and returns an HTTP response.
+
+Unit-Test/Code Cycle
+TDD unit-test/code cycle now:
+    In the terminal, run the unit tests and see how they fail.
+    In the editor, make a minimal code change to address the current test failure.
+
+Useful Commands and Concepts
+Running the Django dev server - python manage.py runserver
+Running the functional tests - python functional_tests.py
+Running the unit tests - python manage.py test
+The unit-test/code cycle
+    Run the unit tests in the terminal.
+    Make a minimal code change in the editor.
+    Repeat!
