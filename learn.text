@@ -43,3 +43,9 @@ TDD process look like?
     We rerun the test and repeat until it passes (the unit test / code cycle)
     Then, we look for opportunities to refactor our code, using our tests to make sure we don’t break anything.
     And start again from the top!
+
+To run the functional tests
+    python manage.py test functional_tests
+
+To run the unit tests
+    python manage.py test lists
