@@ -1,5 +1,5 @@
 """Functional tests using Selenium and Django."""
-
+from django.test import LiveServerTestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -7,7 +7,7 @@ import time
 import unittest
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -34,7 +34,7 @@ class NewVisitorTest(unittest.TestCase):
             "2: Use peacock feathers to make a fly")
 
     def test_can_start_a_todo_list(self):
-        self.browser.get("http://localhost:8000")
+        self.browser.get(self.live_server_url)
         self.assertIn("To-Do", self.browser.title)
         header_text = self.browser.find_element(By.TAG_NAME, "h1").text
         self.assertIn("To-Do", header_text)
@@ -90,8 +90,8 @@ class NewVisitorTest(unittest.TestCase):
 # assert "Congratulation!" in browser.title
 # print("Ok")
 
-if __name__ == "__main__":
-    unittest.main()
+# if __name__ == "__main__":
+#     unittest.main()
 
 # Python script checks if it’s been executed from the command line,
 # rather than just imported by another script
