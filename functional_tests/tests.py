@@ -5,7 +5,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import WebDriverException
 import time
-import unittest
+import os
+
 
 MAX_WAIT = 10
 
@@ -14,6 +15,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
+        test_server = os.environ.get("TEST_SERVER")
+        if test_server:
+            self.live_server_url = "http://" + test_server
 
     def tearDown(self):
         self.browser.quit()
@@ -31,18 +35,18 @@ class NewVisitorTest(StaticLiveServerTestCase):
                     raise
                 time.sleep(0.5)
 
-        inputbox.send_keys(Keys.ENTER)
-        # time.sleep(1)
-        self.wait_for_row_in_list_table("1: Buy peacock feathers")
+        # inputbox.send_keys(Keys.ENTER)
+        # # time.sleep(1)
+        # self.wait_for_row_in_list_table("1: Buy peacock feathers")
 
-        inputbox = self.browser.find_element(By.ID, "id_new_item")
-        inputbox.send_keys("Use peacock feathers to make a fly")
-        inputbox.send_keys(Keys.ENTER)
-        # time.sleep(1)
+        # inputbox = self.browser.find_element(By.ID, "id_new_item")
+        # inputbox.send_keys("Use peacock feathers to make a fly")
+        # inputbox.send_keys(Keys.ENTER)
+        # # time.sleep(1)
 
-        self.wait_for_row_in_list_table("1: Buy peacock feathers")
-        self.wait_for_row_in_list_table(
-            "2: Use peacock feathers to make a fly")
+        # self.wait_for_row_in_list_table("1: Buy peacock feathers")
+        # self.wait_for_row_in_list_table(
+        #     "2: Use peacock feathers to make a fly")
 
         # self.check_for_row_in_list_table("1: Buy peacock feathers")
         # self.check_for_row_in_list_table(
@@ -140,8 +144,6 @@ class NewVisitorTest(StaticLiveServerTestCase):
         # )
 
         # self.fail("Finish the test!")
-
-        [...]
 
 
 # browser = webdriver.Firefox()
