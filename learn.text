@@ -49,3 +49,11 @@ To run the functional tests
 
 To run the unit tests
     python manage.py test lists
+
+setting virtual env
+    $ cd goat-book
+    $ py -3.13 -m venv .venv
+    source .venv/Scripts/activate
+    (.venv) $ pip install "django<6" "selenium"
+    (.venv) $ python -c "from selenium import webdriver; webdriver.Firefox()"
+    
